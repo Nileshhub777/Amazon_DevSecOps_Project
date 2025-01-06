@@ -1,3 +1,4 @@
+
 pipeline{
     agent any
     tools{
@@ -8,7 +9,7 @@ pipeline{
         SCANNER_HOME=tool 'sonar-scanner'
     }
     stages {
-        stage('clean workspace'){
+        stage('Clean workspace'){
             steps{
                 cleanWs()
             }
@@ -26,7 +27,7 @@ pipeline{
                 }
             }
         }
-        stage("quality gate"){
+        stage("Quality gate"){
            steps {
                 script {
                     waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
